@@ -1,0 +1,7 @@
+<ul>
+    [% FOR e = events %]
+        <li[% IF e.signal_id <= latest %] class="seen"[% END %]>
+            [% e.html %]
+        </li>
+    [% END %]
+</ul>

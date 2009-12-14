@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <script>
+            [% INCLUDE 'javascript/jquery.js' %];
+            window.signals = chrome.extension.getBackgroundPage().signals;
+            window.latest = signals.latest;
+            function postSignal() {
+                signals.post($('#text').val(), function() {
+                    $('#list').html(signals.html(latest));
+                    signals.seenAll();
+                });
+                $('#text').val('');
+            }
+        </script>
+        <style>
+            [% INCLUDE css/styles.css %]
+        </style>
+    </head>
+    <body>
+        <textarea id="text"></textarea>
+        <input onclick="postSignal()" type="button" value="post"/>
+        <div id="list"></div>
+
+        <script>
+            $('#list').html(signals.html(latest));
+            signals.seenAll();
+            $('#text').focus().bind('keypress', function(evt){
+                var key = evt.charCode || evt.keyCode;
+                if (key == 13) {
+                    postSignal();
+                    return false;
+                }
+            });
+        </script>
+    </body>
+</html>
