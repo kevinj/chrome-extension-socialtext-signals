@@ -2,6 +2,7 @@
     [% FOR e = events %]
         <li[% IF e.signal_id <= latest %] class="seen"[% END %]>
             [% e.html %]
+            <a onclick="signals.reply([% e.actor.id %]); return false" href="#"><div class="reply"></div></a>
         </li>
     [% END %]
 </ul>

@@ -176,3 +176,15 @@ textarea {
     float: right;
 }
 
+.reply {
+    background: url("images/mini-reply.png") no-repeat top left;
+    height: 12px;
+    width: 15px;
+    position: absolute;
+    right: 3px;
+    top: 23px;
+}
+
+a:hover .reply {
+    background-position: bottom left;
+}

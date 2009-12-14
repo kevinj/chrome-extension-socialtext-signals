@@ -94,6 +94,12 @@ Socialtext.Signals.prototype = {
         });
     },
 
+    reply: function(user_id) {
+        if ($.isFunction(this.onReply)) {
+            this.onReply(user_id);
+        }
+    },
+
     html: function(latest) {
         if (!this._events.length) return "No signals";
         var html = 

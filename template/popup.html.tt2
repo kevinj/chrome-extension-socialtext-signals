@@ -31,6 +31,13 @@
                     return false;
                 }
             });
+            signals.onReply = function(id) {
+                var text = '{user: ' + id + '} ';
+                $('#text').val(text).focus().attr({
+                    selectionStart: text.length,
+                    selectionEnd: text.length
+                });
+            }
         </script>
     </body>
 </html>
